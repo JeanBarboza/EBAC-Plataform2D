@@ -19,6 +19,12 @@ public class Player : MonoBehaviour
     public float animationDuration = .3f;
     public Ease ease = Ease.OutBack;
 
+    [Header("Animation player")]
+    public string boolRun = "Run";
+    public string boolJumpUp = "JumpUp";
+    public Animator animator;
+    public float playerSwipeDuration = .1f;
+
     private float _currentSpeed;
     private bool _isRunning = false;
 
@@ -31,18 +37,39 @@ public class Player : MonoBehaviour
     private void HandleMoviment()
     {
         if (Input.GetKey(KeyCode.LeftShift))
+        {
             _currentSpeed = speedRun;
+            animator.speed = 1.3f;
+        }
         else
+        {
             _currentSpeed = speed;
+            animator.speed = 1;
+        }
 
         if (Input.GetKey(KeyCode.A))
         {
             myRigibody.velocity = new Vector2(-_currentSpeed, myRigibody.velocity.y);
+            if(myRigibody.transform.localScale.x != -1)
+            {
+                myRigibody.transform.DOScaleX(-1, .1f);
+            }
+            animator.SetBool(boolRun, true);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             myRigibody.velocity = new Vector2(_currentSpeed, myRigibody.velocity.y);
+            if (myRigibody.transform.localScale.x != 1)
+            {
+                myRigibody.transform.DOScaleX(1, .1f);
+            }
+            animator.SetBool(boolRun, true);
         }
+        else
+        {
+            animator.SetBool(boolRun, false);
+        }
+
 
         if(myRigibody.velocity.x < 0)
         {
@@ -66,6 +93,12 @@ public class Player : MonoBehaviour
             DOTween.Kill(myRigibody.transform);
 
             HandleScaleJump();
+
+            animator.SetBool(boolJumpUp, true);
+        }
+        else
+        {
+            animator.SetBool(boolJumpUp, false);
         }
             
     }
