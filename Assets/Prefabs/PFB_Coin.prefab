@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5613455544571453623}
   - component: {fileID: 1140963691254068041}
   - component: {fileID: 2867294483097517460}
+  - component: {fileID: 6374427459525259443}
   m_Layer: 0
   m_Name: PFB_Coin
   m_TagString: Untagged
@@ -62,6 +63,17 @@ CircleCollider2D:
   m_Offset: {x: -0.0537827, y: 0.053359747}
   serializedVersion: 2
   m_Radius: 0.6624458
+--- !u!210 &6374427459525259443
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3718813045477602624}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 14
 --- !u!1 &5722547548182496379
 GameObject:
   m_ObjectHideFlags: 0
