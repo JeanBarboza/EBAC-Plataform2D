@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public Animator animator;
     public float playerSwipeDuration = .1f;
 
+
     private float _currentSpeed;
     private bool _isRunning = false;
 
@@ -130,4 +131,5 @@ public class Player : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
 }
