@@ -61,8 +61,6 @@ crashlytics-build.properties
 Assets/Scenes.meta
 Assets/Scenes/SampleScene.unity
 Assets/Scenes/SampleScene.unity.meta
-Packages/manifest.json
-Packages/packages-lock.json
 ProjectSettings/AudioManager.asset
 ProjectSettings/ClusterInputManager.asset
 ProjectSettings/DynamicsManager.asset
