@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Barboza.Core.Singleton;
-using UnityEngine.UI;
 using TMPro;
 
 public class ItemManager : Singleton<ItemManager>
@@ -42,6 +41,7 @@ public class ItemManager : Singleton<ItemManager>
 
     private void UpdateUI()
     {
-        uiPoints.text = coins.ToString();
+        //uiPoints.text = coins.ToString();
+        UIInGameManager.UpdateTextCoins(coins.ToString());
     }
 }
