@@ -7,18 +7,20 @@ using TMPro;
 public class ItemManager : Singleton<ItemManager>
 {
     public Player player;
-    public string checkTag = "Coin";
-    public int coins;
+    public string checkCoin = "Coin";
+    public SOInt coins;
 
     [Header("Points")]
     public TextMeshProUGUI uiPoints;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == checkTag)
+        if (collision.transform.tag == checkCoin)
         {
             AddCoins();
         }
+
+
     }
 
     public void Start()
@@ -28,20 +30,12 @@ public class ItemManager : Singleton<ItemManager>
 
     private void Reset()
     {
-        coins = 0;
-        UpdateUI();
+        coins.value = 0;
     }
+
 
     public void AddCoins(int amount = 1)
     {
-        coins += amount;
-        UpdateUI();
-    }
-
-
-    private void UpdateUI()
-    {
-        //uiPoints.text = coins.ToString();
-        UIInGameManager.UpdateTextCoins(coins.ToString());
+        coins.value += amount;
     }
 }
