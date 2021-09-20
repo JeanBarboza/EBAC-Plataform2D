@@ -11,10 +11,11 @@ public class Player : MonoBehaviour
     [Header("Setup")]
     public SOPlayerSetup soPlayerSetup;
 
+    public Animator animator;
+
     private float _currentSpeed;
     //private bool _isRunning = false;
 
-    public Animator _currentPlayer;
 
     private void Awake()
     {
@@ -23,13 +24,13 @@ public class Player : MonoBehaviour
             healthBase.OnKill += OnPlayerKill;
         }
 
-        _currentPlayer = Instantiate(soPlayerSetup.playerAnimator, transform);
+        //_currentPlayer = Instantiate(soPlayerSetup.player, transform);
     }
 
     private void OnPlayerKill()
     {
         healthBase.OnKill -= OnPlayerKill;
-        _currentPlayer.SetTrigger(soPlayerSetup.triggerDeath);
+        animator.SetTrigger(soPlayerSetup.triggerDeath);
     }
 
     private void Update()
@@ -43,12 +44,12 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             _currentSpeed = soPlayerSetup.speedRun;
-            _currentPlayer.speed = 1.3f;
+            animator.speed = 1.3f;
         }
         else
         {
             _currentSpeed = soPlayerSetup.speed;
-            _currentPlayer.speed = 1;
+            animator.speed = 1;
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour
             {
                 myRigibody.transform.DOScaleX(-1, .1f);
             }
-            _currentPlayer.SetBool(soPlayerSetup.boolRun, true);
+            animator.SetBool(soPlayerSetup.boolRun, true);
         }
         else if (Input.GetKey(KeyCode.D))
         {
@@ -67,11 +68,11 @@ public class Player : MonoBehaviour
             {
                 myRigibody.transform.DOScaleX(1, .1f);
             }
-            _currentPlayer.SetBool(soPlayerSetup.boolRun, true);
+            animator.SetBool(soPlayerSetup.boolRun, true);
         }
         else
         {
-            _currentPlayer.SetBool(soPlayerSetup.boolRun, false);
+            animator.SetBool(soPlayerSetup.boolRun, false);
         }
 
 
@@ -98,11 +99,11 @@ public class Player : MonoBehaviour
 
             HandleScaleJump();
 
-            _currentPlayer.SetBool(soPlayerSetup.boolJumpUp, true);
+            animator.SetBool(soPlayerSetup.boolJumpUp, true);
         }
         else
         {
-            _currentPlayer.SetBool(soPlayerSetup.boolJumpUp, false);
+            animator.SetBool(soPlayerSetup.boolJumpUp, false);
         }
             
     }
