@@ -17,9 +17,12 @@ public class Player : MonoBehaviour
 
     [Header("Jump Collision Check")]
     public Collider2D collider2DPlayer;
+    public Vector2 offset;
     public float distToGround;
     public float spaceToGround = .1f;
     public ParticleSystem jumpVFX;
+
+    public LayerMask groundLayer;
 
 
     private void Awake()
@@ -37,8 +40,8 @@ public class Player : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Debug.DrawRay(transform.position, -Vector2.up, Color.magenta, distToGround + spaceToGround);
-        return Physics2D.Raycast(transform.position, -Vector2.up, distToGround + spaceToGround);
+        Debug.DrawRay((Vector2)transform.position + offset, -Vector2.up, Color.magenta, distToGround + spaceToGround);
+        return Physics2D.Raycast((Vector2)transform.position + offset,-Vector2.up, distToGround + spaceToGround, groundLayer);
     }
 
 

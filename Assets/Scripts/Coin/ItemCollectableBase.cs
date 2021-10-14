@@ -9,6 +9,8 @@ public class ItemCollectableBase : MonoBehaviour
     public float timeToHide = 2f;
     public GameObject graphicItem;
 
+    [Header("Sounds")]
+    public AudioSource audioSource;
 
     private void Awake()
     {
@@ -38,5 +40,6 @@ public class ItemCollectableBase : MonoBehaviour
     protected virtual void OnCollect()
     {
         if (particleSystem != null) particleSystem.Play();
+        if (audioSource != null) audioSource.Play();
     }
 }
