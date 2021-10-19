@@ -10,6 +10,8 @@ public class GunBase : MonoBehaviour
     public float timeBetweenShoot = .2f;
     public Transform playerSideReference;
 
+    public AudioSource gunShoot;
+
     private Coroutine _currentCoroutine;
 
     private void Update()
@@ -37,6 +39,8 @@ public class GunBase : MonoBehaviour
 
     public void Shoot()
     {
+        if (gunShoot != null) gunShoot.Play();
+
         var projectile = Instantiate(prefabProjectile);
         projectile.transform.position = positionToShoot.position;
         projectile.side = playerSideReference.transform.localScale.x;
